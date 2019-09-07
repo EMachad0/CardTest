@@ -10,11 +10,11 @@ public class MainLoop extends PApplet {
 
     @Override
     public void setup() {
-        super.setup();
+        background(255);
+        frameRate(60);
     }
 
     public void draw(){
-        background(0);
-        ellipse(mouseX, mouseY, 20, 20);
+        ellipse(mouseX, mouseY, 60, 60);
     }
 }
