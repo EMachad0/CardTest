@@ -11,13 +11,14 @@ public class MainLoop extends PApplet {
 
     @Override
     public void setup() {
-        super.setup();
+        background(255);
+        frameRate(60);
     }
 
     public void draw(){
         PImage img;
         img = loadImage("./Images/temporario.jpg");
         background(img);
-        ellipse(mouseX, mouseY, 20, 20);
+        ellipse(mouseX, mouseY, 60, 20);
     }
 }
