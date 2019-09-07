@@ -34,7 +34,8 @@ public class Deck extends PApplet {
     }
 
     public void draw() {
-        deck.forEach(c -> image(c.getBack(), x, y, WIDTH, HEIGHT));
+//        deck.forEach(c -> image(c.getBack(), x, y, WIDTH, HEIGHT));
+        deck.forEach(c -> rect(x, y, WIDTH, HEIGHT));
     }
 
 }

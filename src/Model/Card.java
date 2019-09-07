@@ -15,8 +15,8 @@ public class Card extends PApplet {
         this.attack = attack;
         this.name = txt;
 
-        front = loadImage("cardfront.jpeg");
-        back = loadImage("cardback.jpeg");
+//        front = loadImage("Images/cardfront.jpeg");
+//        back = loadImage("Images/cardback.jpeg");
     }
 
     public int getHealth() {
