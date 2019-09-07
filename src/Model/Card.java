@@ -3,20 +3,20 @@ package Model;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class Card extends PApplet {
+public class Card {
     private int health;
     private int attack;
     private String name;
     private PImage front;
     private PImage back;
 
-    public Card(int health, int attack, String txt) {
+    public Card(PApplet view, int health, int attack, String txt) {
         this.health = health;
         this.attack = attack;
         this.name = txt;
 
-//        front = loadImage("Images/cardfront.jpeg");
-//        back = loadImage("Images/cardback.jpeg");
+        front = view.loadImage("./Images/cardfront.jpg");
+        back = view.loadImage("./Images/cardback.jpg");
     }
 
     public int getHealth() {
