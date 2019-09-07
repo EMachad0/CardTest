@@ -7,7 +7,7 @@ import processing.core.PImage;
 
 public class MainLoop extends PApplet {
 
-    Deck p1;
+    private Deck p1;
 
     public void settings(){
         size(1060, 720);
@@ -19,23 +19,18 @@ public class MainLoop extends PApplet {
         frameRate(60);
 
         p1 = criaDeck();
+
+        background(loadImage("./Images/temporario.jpg"));
     }
 
     private Deck criaDeck() {
-        Deck deck = new Deck(10, 10);
-
-        Card c1 = new Card(100, 100, "Nome");
-        c1.setBack(loadImage("./Images/cardback.jpg"));
-        deck.add(c1);
-
+        Deck deck = new Deck(this, 10, 10);
+        deck.add( new Card(this, 100, 100, "Nome"));
         return deck;
     }
 
     public void draw(){
-        PImage img;
-        img = loadImage("./Images/temporario.jpg");
-        background(img);
-        ellipse(mouseX, mouseY, 60, 20);
+        ellipse(mouseX, mouseY, 20, 20);
 
         p1.draw();
     }

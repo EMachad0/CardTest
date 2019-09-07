@@ -5,15 +5,17 @@ import processing.core.PApplet;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Deck extends PApplet {
+public class Deck {
 
+    private PApplet view;
     private ArrayList<Card> deck = new ArrayList<>();
     private int x = 0;
     private int y = 0;
     private final int WIDTH = 150;
-    private final int HEIGHT = 150;
+    private final int HEIGHT = 200;
 
-    public Deck(int x, int y) {
+    public Deck(PApplet view, int x, int y) {
+        this.view = view;
         this.x = x;
         this.y = y;
     }
@@ -34,8 +36,7 @@ public class Deck extends PApplet {
     }
 
     public void draw() {
-//        deck.forEach(c -> image(c.getBack(), x, y, WIDTH, HEIGHT));
-        deck.forEach(c -> rect(x, y, WIDTH, HEIGHT));
+        deck.forEach(c -> view.image(c.getBack(), x, y, WIDTH, HEIGHT));
     }
 
 }
