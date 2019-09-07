@@ -7,13 +7,16 @@ public class Card extends PApplet {
     private int health;
     private int attack;
     private String name;
-    private PImage img;
+    private PImage front;
+    private PImage back;
 
     public Card(int health, int attack, String txt) {
         this.health = health;
         this.attack = attack;
         this.name = txt;
-        img = loadImage("cardSla.jpeg");
+
+        front = loadImage("cardfront.jpeg");
+        back = loadImage("cardback.jpeg");
     }
 
     public int getHealth() {
@@ -40,11 +43,19 @@ public class Card extends PApplet {
         this.name = name;
     }
 
-    public PImage getImg() {
-        return img;
+    public PImage getFront() {
+        return front;
     }
 
-    public void setImg(PImage img) {
-        this.img = img;
+    public void setFront(PImage front) {
+        this.front = front;
+    }
+
+    public PImage getBack() {
+        return back;
+    }
+
+    public void setBack(PImage back) {
+        this.back = back;
     }
 }
