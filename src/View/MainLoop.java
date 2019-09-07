@@ -1,6 +1,7 @@
 package View;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class MainLoop extends PApplet {
 
@@ -14,7 +15,9 @@ public class MainLoop extends PApplet {
     }
 
     public void draw(){
-        background(0);
+        PImage img;
+        img = loadImage("./Images/temporario.jpg");
+        background(img);
         ellipse(mouseX, mouseY, 20, 20);
     }
 }
