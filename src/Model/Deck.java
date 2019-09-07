@@ -9,10 +9,8 @@ public class Deck {
 
     private PApplet view;
     private ArrayList<Card> deck = new ArrayList<>();
-    private int x = 0;
-    private int y = 0;
-    private final int WIDTH = 150;
-    private final int HEIGHT = 200;
+    private int x;
+    private int y;
 
     public Deck(PApplet view, int x, int y) {
         this.view = view;
@@ -36,7 +34,10 @@ public class Deck {
     }
 
     public void draw() {
-        deck.forEach(c -> view.image(c.getBack(), x, y, WIDTH, HEIGHT));
+        int space = 3;
+        int i = 0;
+        for (int c = 0; c < deck.size() && c < 8; c++, i += (x > view.width/2)? space : -space) {
+            deck.get(c).draw(x+i, y-Math.abs(i));
+        }
     }
-
 }

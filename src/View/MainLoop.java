@@ -1,5 +1,6 @@
 package View;
 
+import Controller.GeraDeck;
 import Model.Card;
 import Model.Deck;
 import processing.core.PApplet;
@@ -7,10 +8,11 @@ import processing.core.PImage;
 
 public class MainLoop extends PApplet {
 
-    private Deck p1;
+    private Deck p1, p2;
+    private static final int BORDA = 30;
 
     public void settings(){
-        size(1060, 720);
+        size(1366, 768);
     }
 
     @Override
@@ -18,20 +20,26 @@ public class MainLoop extends PApplet {
         background(255);
         frameRate(60);
 
-        p1 = criaDeck();
+        GeraDeck GD = new GeraDeck(this);
+        p1 = GD.gera(BORDA, BORDA);
+        p2 = GD.gera(width-BORDA-Card.WIDTH, height-BORDA-Card.HEIGHT);
+        System.out.println(width-BORDA-Card.WIDTH + " " + (height-BORDA-Card.HEIGHT));
 
-        background(loadImage("./Images/temporario.jpg"));
-    }
 
-    private Deck criaDeck() {
-        Deck deck = new Deck(this, 10, 10);
-        deck.add( new Card(this, 100, 100, "Nome"));
-        return deck;
+        setBackground();
     }
 
     public void draw(){
-        ellipse(mouseX, mouseY, 20, 20);
-
         p1.draw();
+        p2.draw();
+
+
+//        System.out.println("That was a frame");
+    }
+
+    private void setBackground() {
+        PImage background = loadImage("./Images/background.jpg");
+        background.resize(width, height);
+        background(background);
     }
 }
