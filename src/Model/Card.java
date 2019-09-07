@@ -6,13 +6,13 @@ import processing.core.PImage;
 public class Card extends PApplet {
     private int health;
     private int attack;
-    private String txt;
+    private String name;
     private PImage img;
 
     public Card(int health, int attack, String txt) {
         this.health = health;
         this.attack = attack;
-        this.txt = txt;
+        this.name = txt;
         img = loadImage("cardSla.jpeg");
     }
 
@@ -32,12 +32,12 @@ public class Card extends PApplet {
         this.attack = attack;
     }
 
-    public String getTxt() {
-        return txt;
+    public String getName() {
+        return name;
     }
 
-    public void setTxt(String txt) {
-        this.txt = txt;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public PImage getImg() {
