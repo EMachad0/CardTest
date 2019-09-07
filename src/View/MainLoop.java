@@ -8,6 +8,11 @@ public class MainLoop extends PApplet {
         size(1060, 720);
     }
 
+    @Override
+    public void setup() {
+        super.setup();
+    }
+
     public void draw(){
         background(0);
         ellipse(mouseX, mouseY, 20, 20);
