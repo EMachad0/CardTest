@@ -12,6 +12,7 @@ public class Hand {
     private ArrayList<Card> cards = new ArrayList<>();
     private int y;
 
+    private static final int SPACE = 10;
     private static final int HARD_START = 5;
     private boolean init = true;
 
@@ -26,19 +27,16 @@ public class Hand {
             Card card = deck.drawCard();
             card.setVisibility(true);
             cards.add(card);
+
+            move();
         }
     }
 
     public void draw() {
         if (init) init();
 
-        final int space = 10;
-
-        int x = (view.width - cards.size() * (Card.WIDTH + space) - space) / 2;
-
-        for (int i = 0; i < cards.size(); i++) {
-            cards.get(i).move(x + i * (Card.WIDTH + space), y, (init) ? 10 : 5);
-            cards.get(i).draw();
+        for (Card card : cards) {
+            card.draw();
         }
     }
 
@@ -48,5 +46,16 @@ public class Hand {
                 drawFromDeck();
             }
         } else init = false;
+    }
+
+    public void drag() {
+        for (Card c : cards) c.drag();
+    }
+
+    private void move() {
+        int x = (view.width - cards.size() * (Card.WIDTH + SPACE) - SPACE) / 2;
+        for (int i = 0; i < cards.size(); i++) {
+            cards.get(i).move(x + i * (Card.WIDTH + SPACE), y, (init) ? 10 : 5);
+        }
     }
 }

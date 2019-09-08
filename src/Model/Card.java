@@ -58,7 +58,13 @@ public class Card implements Cloneable{
         if (Math.abs(my - y) < speed) y = my;
         if (my != y) y += (y > my)? -speed : speed;
 
-//        System.out.println(x + " " + mx + " " + y + " "+ my + " " + name);
+//        if (show) System.out.println(x + " " + mx + " " + y + " "+ my + " " + name);
+    }
+
+    void drag() {
+        if (x <= view.mouseX && view.mouseX <= x + WIDTH && y <= view.mouseY && view.mouseY <= y + HEIGHT) {
+            move(view.mouseX - WIDTH/2, view.mouseY - HEIGHT/2, 300);
+        }
     }
 
     void move(int x, int y, int speed) {
