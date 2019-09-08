@@ -16,6 +16,7 @@ public class Card implements Cloneable{
     private int mx;
     private int my;
     private int speed;
+    private boolean click = false;
 
     //status
     private int health;
@@ -58,7 +59,7 @@ public class Card implements Cloneable{
         if (Math.abs(my - y) < speed) y = my;
         if (my != y) y += (y > my)? -speed : speed;
 
-//        System.out.println(x + " " + mx + " " + y + " "+ my + " " + name);
+//        if (show) System.out.println(x + " " + mx + " " + y + " "+ my + " " + name);
     }
 
     void move(int x, int y, int speed) {
@@ -91,5 +92,18 @@ public class Card implements Cloneable{
             e.printStackTrace();
         }
         return null;
+    }
+
+    void drag() {
+        if (click) {
+            move(view.mouseX - WIDTH/2, view.mouseY - HEIGHT/2, 300);
+        }
+    }
+
+    void clicked() {
+        if (x <= view.mouseX && view.mouseX <= x + WIDTH && y <= view.mouseY && view.mouseY <= y + HEIGHT) {
+            move(view.mouseX - WIDTH / 2, view.mouseY - HEIGHT / 2, 300);
+            click = true;
+        } else click = false;
     }
 }
