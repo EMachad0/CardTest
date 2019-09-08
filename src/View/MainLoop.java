@@ -24,7 +24,6 @@ public class MainLoop extends PApplet {
         GeraDeck GD = new GeraDeck(this);
         p1 = GD.gera(BORDA, BORDA);
         p2 = GD.gera(width-BORDA-Card.WIDTH, height-BORDA-Card.HEIGHT);
-        System.out.println(width-BORDA-Card.WIDTH + " " + (height-BORDA-Card.HEIGHT));
 
         setBackground();
         background(background);
