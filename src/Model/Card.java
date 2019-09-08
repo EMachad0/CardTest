@@ -101,7 +101,7 @@ public class Card implements Cloneable{
     }
 
     void clicked() {
-        if (x <= view.mouseX && view.mouseX <= x + WIDTH && y <= view.mouseY && view.mouseY <= y + HEIGHT) {
+        if (mx <= view.mouseX && view.mouseX <= mx + WIDTH && my <= view.mouseY && view.mouseY <= my + HEIGHT) {
             move(view.mouseX - WIDTH / 2, view.mouseY - HEIGHT / 2, 300);
             click = true;
         } else click = false;

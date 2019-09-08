@@ -11,6 +11,7 @@ public class Hand {
     private Deck deck;
     private ArrayList<Card> cards = new ArrayList<>();
     private int y;
+    private int x;
 
     private static final int SPACE = 10;
     private static final int HARD_START = 5;
@@ -21,13 +22,13 @@ public class Hand {
     }
 
     public Hand(PApplet view, Deck deck, int bot) {
+        this.view = view;
         this.deck = deck;
         this.y = bot * (view.height-10-Card.HEIGHT);
-        this.view = view;
     }
 
     public void drawFromDeck() {
-        if (!deck.isEmpty()) {
+        if (!deck.isEmpty() && cards.size() < 7) {
             Card card = deck.drawCard();
             card.setVisibility(true);
             cards.add(card);
@@ -57,14 +58,20 @@ public class Hand {
     }
 
     private void move() {
-        int x = (view.width - cards.size() * (Card.WIDTH + SPACE) - SPACE) / 2;
+        x = (view.width - cards.size() * (Card.WIDTH + SPACE) - SPACE) / 2;
         for (int i = 0; i < cards.size(); i++) {
             cards.get(i).move(x + i * (Card.WIDTH + SPACE), y, (init) ? 15 : 5);
         }
     }
+    private void move(int speed) {
+        x = (view.width - cards.size() * (Card.WIDTH + SPACE) - SPACE) / 2;
+        for (int i = 0; i < cards.size(); i++) {
+            cards.get(i).move(x + i * (Card.WIDTH + SPACE), y, speed);
+        }
+    }
 
     public void reset() {
-        move();
+        move(25);
     }
 
     public void clicked() {
