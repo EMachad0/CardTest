@@ -4,6 +4,7 @@ import Controller.GeraDeck;
 import Model.Button;
 import Model.Card;
 import Model.Deck;
+import Model.Hand;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -40,18 +41,24 @@ public class MainLoop extends PApplet {
         deck1.draw();
         deck2.draw();
 
-        p1.draw();
-        p2.draw();
+        deck1.draw();//Actually enemy deck
+        deck2.draw();//Our deck
       
         Button finish = new Button(1130 , 325,150,50, 255, true);
         finish.drawButton( this);
-        Button a = new Button(deck1.getX(), deck1.getY(), 150, 100, 255, false);
-        a.drawButton(this);
 
-//        System.out.println("That was a frame");
+        Button drawDeck1 = new Button(deck1.getX() - 10 ,deck1.getX() - 10 , Card.WIDTH, Card.HEIGHT, 255, false);
+        drawDeck1.drawButton(this);
 
-        if (a.clicked(this)){
-            System.out.println("A");
+        Button drawDeck2 = new Button(deck2.getX() + 10, deck2.getY() - 10, Card.WIDTH, Card.HEIGHT, 255, false);
+        drawDeck2.drawButton(this);
+
+
+        if (drawDeck1.clicked(this)){
+            //TODO not Auto genereted method by @Korhal
+        }
+        if( drawDeck2.clicked(this)){
+            //TODO not Auto genereted method by @Korhal
         }
     }
     private void setBackground() {
