@@ -4,6 +4,7 @@ import Controller.GeraDeck;
 import Model.Button;
 import Model.Card;
 import Model.Deck;
+import Model.Hand;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -45,14 +46,15 @@ public class MainLoop extends PApplet {
       
         Button finish = new Button(1130 , 325,150,50, 255, true);
         finish.drawButton( this);
+        
         Button a = new Button(deck1.getX(), deck1.getY(), 150, 100, 255, false);
         a.drawButton(this);
-
-//        System.out.println("That was a frame");
 
         if (a.clicked(this)){
             System.out.println("A");
         }
+
+//        System.out.println("That was a frame");
     }
     private void setBackground() {
         background = loadImage("./Images/background.jpg");
