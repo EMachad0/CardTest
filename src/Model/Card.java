@@ -3,17 +3,26 @@ package Model;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class Card {
+public class Card implements Cloneable{
 
     //cards mantain a h = 1.4 W ratio
     public static final int WIDTH = 100;
     public static final int HEIGHT = (int) (1.4*WIDTH);
 
+    //animation
     private boolean show = false;
+    private int x = -1;
+    private int y = -1;
+    private int mx;
+    private int my;
+    private int speed;
+
+    //status
     private int health;
     private int attack;
     private String name;
 
+    //Processing
     private final PApplet view;
     private PImage front;
     private PImage back;
@@ -27,7 +36,7 @@ public class Card {
         loadImg();
     }
 
-    void draw(int x, int y) {
+    void draw() {
         view.pushMatrix();
         view.translate(x, y);
 
@@ -35,6 +44,19 @@ public class Card {
         else view.image(back, 0, 0, WIDTH, HEIGHT);
 
         view.popMatrix();
+
+        if (mx - x < speed) x = mx;
+        if (mx != x) x += (x > mx)? -speed : speed;
+        if (my - y < speed) x = mx;
+        if (my != y) y += (y > my)? -speed : speed;
+    }
+
+    void move(int x, int y, int speed) {
+        this.speed = speed;
+        if (this.x == -1) this.x = x;
+        else this.mx = x;
+        if (this.y == -1) this.y = y;
+        else this.my = y;
     }
 
     private void loadImg() {
@@ -49,5 +71,15 @@ public class Card {
 
     public void setVisibility(boolean show) {
         this.show = show;
+    }
+
+    @Override
+    public Object clone() {
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
