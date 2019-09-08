@@ -8,10 +8,12 @@ public class Hand {
 
     private final PApplet view;
 
+    private Deck deck;
     private ArrayList<Card> cards = new ArrayList<>();
     private int y;
 
     public Hand(PApplet view, Deck deck, int bot) {
+        this.deck = deck;
         this.y = bot * (view.height-10-Card.HEIGHT);
         this.view = view;
 
@@ -19,6 +21,12 @@ public class Hand {
             cards.add(deck.drawCard());
             cards.get(i).setVisibility(true);
         }
+    }
+
+    public void drawFromDeck() {
+        Card card = deck.drawCard();
+        card.setVisibility(true);
+        cards.add(card);
     }
 
     public void draw(){
