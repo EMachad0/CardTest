@@ -67,8 +67,20 @@ public class MainLoop extends PApplet {
     }
 
     @Override
+    public void mousePressed() {
+        p1.clicked();
+        p2.clicked();
+    }
+
+    @Override
     public void mouseDragged() {
         p1.drag();
         p2.drag();
+    }
+
+    @Override
+    public void mouseReleased() {
+        p1.reset();
+        p2.reset();
     }
 }
