@@ -55,7 +55,15 @@ public class Hand {
     private void move() {
         int x = (view.width - cards.size() * (Card.WIDTH + SPACE) - SPACE) / 2;
         for (int i = 0; i < cards.size(); i++) {
-            cards.get(i).move(x + i * (Card.WIDTH + SPACE), y, (init) ? 10 : 5);
+            cards.get(i).move(x + i * (Card.WIDTH + SPACE), y, (init) ? 15 : 5);
         }
+    }
+
+    public void reset() {
+        move();
+    }
+
+    public void clicked() {
+        for (Card c : cards) c.clicked();
     }
 }
