@@ -1,10 +1,7 @@
 package View;
 
 import Controller.GeraDeck;
-import Model.Button;
-import Model.Card;
-import Model.Deck;
-import Model.Hand;
+import Model.*;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -17,6 +14,7 @@ public class MainLoop extends PApplet {
     private Button finish = new Button(1130 , 325,150,50, 255, true, this);
     private Button drawDeck1;
     private Button drawDeck2;
+    TextPanel turn;
 
     public void settings(){
         size(1366, 768);
@@ -26,6 +24,8 @@ public class MainLoop extends PApplet {
     public void setup() {
         background(255);
         frameRate(60);
+
+         turn = new TextPanel(750, 360, "AAAA", this, 30);
 
         GeraDeck GD = new GeraDeck(this);
         deck1 = GD.gera(BORDA, BORDA);
@@ -56,7 +56,7 @@ public class MainLoop extends PApplet {
 
         drawDeck1.drawButton();
         drawDeck2.drawButton();
-
+        finish.drawButton();
     }
 
     private void setBackground() {
@@ -64,10 +64,18 @@ public class MainLoop extends PApplet {
         background.resize(width, height);
     }
 
+
     @Override
     public void mouseClicked() {
-        if (drawDeck1.clicked()) {
+        if (drawDeck1.clicked() && p1.getSize() < 7) {
             p1.drawFromDeck();
         }
+        if(drawDeck2.clicked() && p2.getSize() < 7){
+            p2.drawFromDeck();
+        }
+        if(finish.clicked()){
+            turn.draw();
+        }
     }
+
 }
