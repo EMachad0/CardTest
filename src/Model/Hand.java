@@ -1,46 +1,34 @@
 package Model;
 
+import processing.core.PApplet;
+
 import java.util.ArrayList;
 
 public class Hand {
-    private final int space = 10;
+
+    private final PApplet view;
+
     private ArrayList<Card> cards = new ArrayList<>();
-    private int qtdCard = cards.size();
+    private int y;
 
-    public Hand(Deck deck) {
-        for(int i = 1; i <= 5; i ++){
+    public Hand(PApplet view, Deck deck, int bot) {
+        this.y = bot * (view.height-10-Card.HEIGHT);
+        this.view = view;
+
+        for(int i = 0; i < 5; i ++) {
             cards.add(deck.drawCard());
+            cards.get(i).setVisibility(true);
         }
     }
 
-    public void drawHand(Deck deck, int player){
-        if(player == 1){
-            int x = 1366 / 2;
-            int y = 268;
+    public void draw(){
+        final int space = 10;
 
-            if(qtdCard == 0){
-                cards.get(0).draw(x, y);
-            }
+        int x = (view.width - cards.size() * (Card.WIDTH + space) - space)/2;
 
-            int locateRight = x + (Card.WIDTH / 2) + space;
-            int locateLeft = x - (Card.WIDTH / 2) - space;
-
-            for (int i = 1; i <= qtdCard; i++){
-                if((i % 2) == 0){
-                    cards.get(i).draw(locateRight, y);
-                    locateRight += (Card.WIDTH / 2) + space;
-                }else{
-                    cards.get(i).draw(locateLeft , y);
-                    locateLeft += (Card.WIDTH / 2) - space;
-                }
-            }
+        for (int i = 0; i < cards.size(); i++) {
+            cards.get(i).move(x + i * (Card.WIDTH + space), y, 5);
+            cards.get(i).draw();
         }
-    }
-
-    public boolean isEmpty(){
-        if(qtdCard == 0)
-            return true;
-        else
-            return false;
     }
 }

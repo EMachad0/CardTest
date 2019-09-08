@@ -9,7 +9,8 @@ import processing.core.PImage;
 
 public class MainLoop extends PApplet {
 
-    private Deck p1, p2;
+    private Deck deck1, deck2;
+    private Hand p1, p2;
     private static final int BORDA = 30;
     private PImage background;
 
@@ -23,9 +24,11 @@ public class MainLoop extends PApplet {
         frameRate(60);
 
         GeraDeck GD = new GeraDeck(this);
-        p1 = GD.gera(BORDA, BORDA);
-        p2 = GD.gera(width-BORDA-Card.WIDTH, height-BORDA-Card.HEIGHT);
-        System.out.println(width-BORDA-Card.WIDTH + " " + (height-BORDA-Card.HEIGHT));
+        deck1 = GD.gera(BORDA, BORDA);
+        deck2 = GD.gera(width-BORDA-Card.WIDTH, height-BORDA-Card.HEIGHT);
+
+        p1 = new Hand(this, deck1, 0);
+        p2 = new Hand(this, deck2, 1);
 
         setBackground();
         background(background);
@@ -34,9 +37,11 @@ public class MainLoop extends PApplet {
     public void draw(){
         image(background, 0, 0);
 
+        deck1.draw();
+        deck2.draw();
+
         p1.draw();
         p2.draw();
-
 
 //        System.out.println("That was a frame");
     }

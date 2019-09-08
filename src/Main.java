@@ -1,4 +1,3 @@
-import Model.Hand;
 import View.MainLoop;
 import processing.core.PApplet;
 
