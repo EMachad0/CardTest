@@ -11,6 +11,7 @@ public class MainLoop extends PApplet {
 
     private Deck p1, p2;
     private static final int BORDA = 30;
+    private PImage background;
 
     public void settings(){
         size(1366, 768);
@@ -27,9 +28,12 @@ public class MainLoop extends PApplet {
         System.out.println(width-BORDA-Card.WIDTH + " " + (height-BORDA-Card.HEIGHT));
 
         setBackground();
+        background(background);
     }
 
     public void draw(){
+        image(background, 0, 0);
+
         p1.draw();
         p2.draw();
 
@@ -38,8 +42,7 @@ public class MainLoop extends PApplet {
     }
 
     private void setBackground() {
-        PImage background = loadImage("./Images/background.jpg");
+        background = loadImage("./Images/background.jpg");
         background.resize(width, height);
-        background(background);
     }
 }

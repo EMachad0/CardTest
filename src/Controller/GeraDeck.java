@@ -35,7 +35,7 @@ public class GeraDeck {
         Deck deck = new Deck(view, x, y);
 
         for (int i = 0; i < DECK_SIZE; i++) {
-            deck.add(v.get((int) (Math.random() * DECK_SIZE)));
+            deck.add((Card) v.get((int) (Math.random() * DECK_SIZE)).clone());
         }
 
         return deck;
