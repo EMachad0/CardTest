@@ -45,10 +45,12 @@ public class Card implements Cloneable{
 
         view.popMatrix();
 
-        if (mx - x < speed) x = mx;
+        if (Math.abs(mx - x) < speed) x = mx;
         if (mx != x) x += (x > mx)? -speed : speed;
-        if (my - y < speed) x = mx;
+        if (Math.abs(my - y) < speed) y = my;
         if (my != y) y += (y > my)? -speed : speed;
+
+//        System.out.println(x + " " + mx + " " + y + " "+ my + " " + name);
     }
 
     void move(int x, int y, int speed) {
