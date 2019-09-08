@@ -19,21 +19,16 @@ public class Button {
         this.fullfill = fullfill;
     }
 
-    public void drawButton(PApplet mainLoop){
-
-        mainLoop.rect(x,y,w,h);
+    public void drawButton(PApplet view){
         if(fullfill) {
-            mainLoop.fill(rgb);
+            view.rect(x,y,w,h);
+            view.fill(rgb);
         }
     }
 
     public boolean clicked(PApplet mainLoop){
         if(mainLoop.mousePressed){
-            if(mainLoop.mouseX > x && mainLoop.mouseX < x + w && mainLoop.mouseY > y && mainLoop.mouseY < y + h){
-                //do stuff
-                return true;
-            }
-            else return false;
+            return mainLoop.mouseX > x && mainLoop.mouseX < x + w && mainLoop.mouseY > y && mainLoop.mouseY < y + h;
         } else return false;
     }
 }
