@@ -21,7 +21,7 @@ public class Button {
         this.transparent = fullfill;
         this.view = view;
     }
-
+  
     public void drawButton(){
 
         if(transparent) {
@@ -30,7 +30,7 @@ public class Button {
         }
     }
 
-    public boolean MouseIsOver() {
+   public boolean MouseIsOver() {
         if(view.mouseX > x && view.mouseX < x + w && view.mouseY > y && view.mouseY < y + h){
             //do stuff
             if (!clicked) {
