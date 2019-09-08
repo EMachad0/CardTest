@@ -8,27 +8,40 @@ public class Button {
     private float w;
     private float h;
     private int rgb;
-    private boolean fullfill;
+    private boolean transparent;
+    private PApplet view;
+    private boolean clicked = false;
 
-    public Button(float x, float y, float w, float h, int rgb, boolean fullfill) {
+    public Button(float x, float y, float w, float h, int rgb, boolean fullfill, PApplet view) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
         this.rgb = rgb;
-        this.fullfill = fullfill;
+        this.transparent = fullfill;
+        this.view = view;
     }
+  
+    public void drawButton(){
 
-    public void drawButton(PApplet view){
-        if(fullfill) {
+        if(transparent) {
             view.rect(x,y,w,h);
             view.fill(rgb);
         }
     }
 
-    public boolean clicked(PApplet mainLoop){
-        if(mainLoop.mousePressed){
-            return mainLoop.mouseX > x && mainLoop.mouseX < x + w && mainLoop.mouseY > y && mainLoop.mouseY < y + h;
-        } else return false;
+   public boolean MouseIsOver() {
+        if(view.mouseX > x && view.mouseX < x + w && view.mouseY > y && view.mouseY < y + h){
+            //do stuff
+            if (!clicked) {
+                clicked = true;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void setClicked(boolean clicked) {
+        this.clicked = clicked;
     }
 }
