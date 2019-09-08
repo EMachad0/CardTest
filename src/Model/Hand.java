@@ -19,7 +19,7 @@ public class Hand {
             int y = 268;
 
             if(qtdCard == 0){
-                cards.get(0).draw(x, y);
+               // cards.get(0).draw(x, y);
             }
 
             int locateRight = x + (Card.WIDTH / 2) + space;
@@ -27,10 +27,10 @@ public class Hand {
 
             for (int i = 1; i <= qtdCard; i++){
                 if((i % 2) == 0){
-                    cards.get(i).draw(locateRight, y);
+                    //cards.get(i).draw(locateRight, y);
                     locateRight += (Card.WIDTH / 2) + space;
                 }else{
-                    cards.get(i).draw(locateLeft , y);
+                    //cards.get(i).draw(locateLeft , y);
                     locateLeft += (Card.WIDTH / 2) - space;
                 }
             }
