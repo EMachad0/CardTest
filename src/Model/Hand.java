@@ -17,10 +17,6 @@ public class Hand {
     private static final int HARD_START = 5;
     private boolean init = true;
 
-    public int getSize(){
-        return cards.size();
-    }
-
     public Hand(PApplet view, Deck deck, int bot) {
         this.view = view;
         this.deck = deck;
