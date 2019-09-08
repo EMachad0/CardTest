@@ -3,6 +3,7 @@ package View;
 import Controller.GeraDeck;
 import Model.Card;
 import Model.Deck;
+import Model.Hand;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -24,7 +25,6 @@ public class MainLoop extends PApplet {
         p1 = GD.gera(BORDA, BORDA);
         p2 = GD.gera(width-BORDA-Card.WIDTH, height-BORDA-Card.HEIGHT);
         System.out.println(width-BORDA-Card.WIDTH + " " + (height-BORDA-Card.HEIGHT));
-
 
         setBackground();
     }
