@@ -28,8 +28,10 @@ public class Hand {
             for (int i = 1; i <= qtdCard; i++){
                 if((i % 2) == 0){
                     cards.get(i).draw(locateRight, y);
+                    locateRight += (Card.WIDTH / 2) + space;
                 }else{
                     cards.get(i).draw(locateLeft , y);
+                    locateLeft += (Card.WIDTH / 2) - space;
                 }
             }
         }
