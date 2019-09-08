@@ -35,7 +35,7 @@ public class Deck {
     }
 
     public void draw() {
-        int space = 3;
+        final int space = 3;
         int i = 0;
         for (int c = 0; c < deck.size() && c < 8; c++, i += (x > view.width/2)? space : -space) {
             deck.get(c).move(x+i, y-Math.abs(i), 1);
