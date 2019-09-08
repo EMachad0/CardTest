@@ -10,7 +10,6 @@ public class Button {
     private int rgb;
     private boolean transparent;
     private PApplet view;
-    private boolean clicked = false;
 
     public Button(float x, float y, float w, float h, int rgb, boolean fullfill, PApplet view) {
         this.x = x;
@@ -30,18 +29,8 @@ public class Button {
         }
     }
 
-   public boolean MouseIsOver() {
-        if(view.mouseX > x && view.mouseX < x + w && view.mouseY > y && view.mouseY < y + h){
-            //do stuff
-            if (!clicked) {
-                clicked = true;
-                return true;
-            }
-        }
-        return false;
-    }
+   public boolean clicked() {
+       return view.mouseX > x && view.mouseX < x + w && view.mouseY > y && view.mouseY < y + h;
+   }
 
-    public void setClicked(boolean clicked) {
-        this.clicked = clicked;
-    }
 }
