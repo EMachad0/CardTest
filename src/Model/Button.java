@@ -21,8 +21,8 @@ public class Button {
 
     public void drawButton(PApplet mainLoop){
 
+        mainLoop.rect(x,y,w,h);
         if(fullfill) {
-            mainLoop.rect(x,y,w,h);
             mainLoop.fill(rgb);
         }
     }
@@ -30,7 +30,6 @@ public class Button {
     public boolean clicked(PApplet mainLoop){
         if(mainLoop.mousePressed){
             if(mainLoop.mouseX > x && mainLoop.mouseX < x + w && mainLoop.mouseY > y && mainLoop.mouseY < y + h){
-                mainLoop.fill(0);
                 //do stuff
                 return true;
             }
