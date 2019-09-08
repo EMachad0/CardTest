@@ -3,6 +3,7 @@ package View;
 import Controller.GeraDeck;
 import Model.Card;
 import Model.Deck;
+import Model.Hand;
 import processing.core.PApplet;
 import processing.core.PImage;
 
