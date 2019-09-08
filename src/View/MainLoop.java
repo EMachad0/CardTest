@@ -32,7 +32,7 @@ public class MainLoop extends PApplet {
         deck2 = GD.gera(width-BORDA-Card.WIDTH, height-BORDA-Card.HEIGHT);
 
         drawDeck1 = new Button(deck1.getX() - 10 ,deck1.getX() - 10 , Card.WIDTH, Card.HEIGHT, 255, false, this);
-        drawDeck2 = drawDeck2 = new Button(deck2.getX() + 10, deck2.getY() - 10, Card.WIDTH, Card.HEIGHT, 255, false, this);
+        drawDeck2 = new Button(deck2.getX() + 10, deck2.getY() - 10, Card.WIDTH, Card.HEIGHT, 255, false, this);
 
         p1 = new Hand(this, deck1, 0);
         p2 = new Hand(this, deck2, 1);
@@ -50,8 +50,8 @@ public class MainLoop extends PApplet {
         deck1.draw(); //Actually enemy deck
         deck2.draw(); //Our deck
 
-        p1.draw();//Actually enemy deck
-        p2.draw();//Our deck
+        p1.draw();    //Actually enemy hand
+        p2.draw();    //Our hand
 
 
         drawDeck1.drawButton();
@@ -66,8 +66,7 @@ public class MainLoop extends PApplet {
 
     @Override
     public void mouseClicked() {
-        if (drawDeck1.clicked()) {
-            p1.drawFromDeck();
-        }
+        if (drawDeck1.clicked()) p1.drawFromDeck();
+        if (drawDeck2.clicked()) p2.drawFromDeck();
     }
 }

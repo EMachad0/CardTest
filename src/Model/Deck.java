@@ -24,11 +24,11 @@ public class Deck {
         shuffle();
     }
 
-    public void shuffle() {
+    private void shuffle() {
         Collections.shuffle(deck);
     }
 
-    public Card drawCard() {
+    Card drawCard() {
         Card aux = deck.get(deck.size()-1);
         deck.remove(deck.size()-1);
         return aux;
@@ -57,5 +57,9 @@ public class Deck {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    boolean isEmpty() {
+        return deck.size() == 0;
     }
 }

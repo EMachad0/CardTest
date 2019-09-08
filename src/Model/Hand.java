@@ -22,9 +22,11 @@ public class Hand {
     }
 
     public void drawFromDeck() {
-        Card card = deck.drawCard();
-        card.setVisibility(true);
-        cards.add(card);
+        if (!deck.isEmpty()) {
+            Card card = deck.drawCard();
+            card.setVisibility(true);
+            cards.add(card);
+        }
     }
 
     public void draw() {
