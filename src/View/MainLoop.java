@@ -60,6 +60,8 @@ public class MainLoop extends PApplet {
         if( drawDeck2.clicked(this)){
             //TODO not Auto genereted method by @Korhal
         }
+
+//        System.out.println("That was a frame");
     }
     private void setBackground() {
         background = loadImage("./Images/background.jpg");

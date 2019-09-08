@@ -24,7 +24,7 @@ public class GeraDeck {
             in = new Scanner(new File("./Libraries/CardSuggestion"));
 
             while (in.hasNextLine()) {
-                v.add(new Card(view, in.nextInt(), in.nextInt(), in.nextLine()));
+                v.add(new Card(view, in.nextInt(), in.nextInt(), in.next(), in.nextLine()));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

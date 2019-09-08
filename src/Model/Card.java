@@ -27,13 +27,21 @@ public class Card implements Cloneable{
     private PImage front;
     private PImage back;
 
+    public Card(PApplet view, int health, int attack, String img, String txt) {
+        this.view = view;
+        this.health = health;
+        this.attack = attack;
+        this.name = txt;
+
+        loadImg("./Images/cards/" + img);
+    }
     public Card(PApplet view, int health, int attack, String txt) {
         this.view = view;
         this.health = health;
         this.attack = attack;
         this.name = txt;
 
-        loadImg();
+        loadImg("./Images/cardfront.jpg");
     }
 
     void draw() {
@@ -61,17 +69,17 @@ public class Card implements Cloneable{
         else this.my = y;
     }
 
-    private void loadImg() {
+    private void loadImg(String path) {
         PImage back = view.loadImage("./Images/cardback.jpg");
         back.resize(WIDTH, HEIGHT);
         this.back = back;
 
-        PImage front = view.loadImage("./Images/cardfront.jpg");
+        PImage front = view.loadImage(path);
         front.resize(WIDTH, HEIGHT);
         this.front = front;
     }
 
-    public void setVisibility(boolean show) {
+    void setVisibility(boolean show) {
         this.show = show;
     }
 
