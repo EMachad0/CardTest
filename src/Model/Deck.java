@@ -19,6 +19,7 @@ public class Deck {
     }
 
     public void add(Card card) {
+        card.move(x, y, 1);
         deck.add(card);
         shuffle();
     }
@@ -37,7 +38,8 @@ public class Deck {
         int space = 3;
         int i = 0;
         for (int c = 0; c < deck.size() && c < 8; c++, i += (x > view.width/2)? space : -space) {
-            deck.get(c).draw(x+i, y-Math.abs(i));
+            deck.get(c).move(x+i, y-Math.abs(i), 1);
+            deck.get(c).draw();
         }
     }
 }
