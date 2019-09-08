@@ -25,8 +25,6 @@ public class MainLoop extends PApplet {
         background(255);
         frameRate(60);
 
-         turn = new TextPanel(750, 360, "AAAA", this, 30);
-
         GeraDeck GD = new GeraDeck(this);
         deck1 = GD.gera(BORDA, BORDA);
         deck2 = GD.gera(width-BORDA-Card.WIDTH, height-BORDA-Card.HEIGHT);
@@ -64,7 +62,9 @@ public class MainLoop extends PApplet {
     @Override
     public void mouseClicked() {
         if(finish.clicked()){
-            turn.draw();
+            turn = new TextPanel(this);
+            turn.setup();
+            turn.draw(1000);
         }
         if (drawDeck1.clicked()) p1.drawFromDeck();
         if (drawDeck2.clicked()) p2.drawFromDeck();
